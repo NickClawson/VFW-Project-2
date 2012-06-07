@@ -34,19 +34,8 @@
 						</ul>
 					</li>
 					<li><label for="rating">Rating (Scale of 1-10):</label><br /><input type="range" name="rating" id="rating" min="1" max ="10" /></li><!--what did you think of the ride on scale of 1-10-->
-					<li>
-						<label for="park">Park Location:</label><!--below creates drop down menu to select at which park the ride is located-->
-						<select id="park">
-							<optgroup label="Ohio"><!--this is a label within the dropdown menu, is not selectable-->
-								<option value="Cedar Point">Cedar Point</option>
-								<option value="King's Island">King's Island</option>
-							</optgroup>
-							<optgroup label="Pennsylvania"><!--this is a label within the dropdown menu, is not selectable-->
-								<option value="Kennywood">Kennywood</option>
-								<option value="Hersheypark">Hersheypark</option>
-							</optgroup>
-						</select>
-					</li>
+					<li id="select">
+						<label for="parkLocation">Park Location:</label><br /></li><!--below creates drop down menu to select at which park the ride is located-->
 					<li><label for="comments">Additional Comments:</label><br /><textarea id="comments"></textarea></li><!--text box for additional comments-->
 					<li><input type="hidden" value="true" /></li><!--hidden value, nothing iportant returned yet-->
 				</ul>
