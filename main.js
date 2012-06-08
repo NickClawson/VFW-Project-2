@@ -34,6 +34,26 @@ window.addEventListener("DOMContentLoaded", function(){ //This function waits un
 		};
 	};
 
+	function toggleControls(n){//hides form when displaying data and vice versa
+		switch(n){
+			case "on":
+				$("rideForm").style.display = "none";
+				$("clear").style.display = "inline";
+				$("displayLink").style.display = "none";
+				$("addNew").style.display = "inline";
+				break;
+			case "off":
+				$("rideForm").style.display = "block";
+				$("clear").style.display = "inline";
+				$("displayLink").style.display = "inline";
+				$("addNew").style.display = "none";
+				$("items").style.display = "none";
+				break;
+			default:
+				return false;
+		}
+	};
+
 	function saveData(){ //function will add form data to local storage
 		getSelectedRadio();
 		var id = Math.floor(Math.random() * 132145433);
@@ -51,11 +71,13 @@ window.addEventListener("DOMContentLoaded", function(){ //This function waits un
 	};
 
 	function getData(){//function will retrieve data from local storage and display in window
+		toggleControls("on");
 		var makeDiv = document.createElement("div");
 		makeDiv.setAttribute("id", "items");
 		var makeList = document.createElement("ul");
 		makeDiv.appendChild(makeList);
 		document.body.appendChild(makeDiv);
+		$("items").style.display = "block";
 		for(var i = 0, j = localStorage.length; i < j; i++){//retrieving each item from local storage
 			var makeLi = document.createElement("li");
 			makeList.appendChild(makeLi);
