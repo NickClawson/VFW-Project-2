@@ -38,18 +38,40 @@ window.addEventListener("DOMContentLoaded", function(){ //This function waits un
 		getSelectedRadio();
 		var id = Math.floor(Math.random() * 132145433);
 		var storageItem = {};
-			storageItem.ride = ["Ride Name", $("rname").value];
-			storageItem.park = ["Park", $("locations").value];
-			storageItem.type = ["Ride Type", typeValue];
-			storageItem.rating = ["Rating", $("rating").value];
-			storageItem.date = ["Date Ridden", $("date").value];
-			storageItem.comments = ["Comments", $("comments").value];
+			storageItem.ride = ["Ride Name: ", $("rname").value];
+			storageItem.park = ["Park: ", $("locations").value];
+			storageItem.type = ["Ride Type: ", typeValue];
+			storageItem.rating = ["Rating: ", $("rating").value];
+			storageItem.date = ["Date Ridden: ", $("date").value];
+			storageItem.comments = ["Comments: ", $("comments").value];
 		
 		//local storage can only accept strings! below converts above object to string and saves it
 		localStorage.setItem(id, JSON.stringify(storageItem));
 		alert("Rating Saved, Ride On!");
 	};
 
+	function getData(){//function will retrieve data from local storage and display in window
+		var makeDiv = document.createElement("div");
+		makeDiv.setAttribute("id", "items");
+		var makeList = document.createElement("ul");
+		makeDiv.appendChild(makeList);
+		document.body.appendChild(makeDiv);
+		for(var i = 0, j = localStorage.length; i < j; i++){//retrieving each item from local storage
+			var makeLi = document.createElement("li");
+			makeList.appendChild(makeLi);
+			var key = localStorage.key(i);
+			var value = localStorage.getItem(key);
+			var rideRating = JSON.parse(value); //converted from local object string to object
+			var makeSubList = document.createElement("ul");
+			makeLi.appendChild(makeSubList);
+			for (var n in rideRating){
+				var makeSubLi = document.createElement("li");
+				makeSubList.appendChild(makeSubLi);
+				var optSubText = rideRating[n][0] + " " + rideRating[n][1];
+				makeSubLi.innerHTML = optSubText;
+			};
+		};
+	};
 
 	//Default Variables
 	var rideLocation = ["--Choose a Park--", "Cedar Point", "King's Island","Kennywood","Hersheypark"];
@@ -57,8 +79,8 @@ window.addEventListener("DOMContentLoaded", function(){ //This function waits un
 	makeCategory();
 
 	//The below variales set link and submit button click events
-//	var displayLink = $('displayLink');
-//	displayLink.addEventListener("click", getData);
+	var displayLink = $("displayLink");
+	displayLink.addEventListener("click", getData);
 //	var clearLink = $("clear");
 //	clearLink.addEventListener("click", clearLocal);
 	var save = $("submit");
