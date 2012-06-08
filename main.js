@@ -95,6 +95,18 @@ window.addEventListener("DOMContentLoaded", function(){ //This function waits un
 		};
 	};
 
+	function clearLocal(){//function to clear local storage data
+		if(localStorage.length === 0){
+			alert("There is no data to clear!")
+		}
+		else{
+			localStorage.clear();
+			alert("All ratings have been cleared.");
+			window.location.reload();
+			return false;
+		};
+	};
+
 	//Default Variables
 	var rideLocation = ["--Choose a Park--", "Cedar Point", "King's Island","Kennywood","Hersheypark"];
 	var typeValue;
@@ -103,8 +115,8 @@ window.addEventListener("DOMContentLoaded", function(){ //This function waits un
 	//The below variales set link and submit button click events
 	var displayLink = $("displayLink");
 	displayLink.addEventListener("click", getData);
-//	var clearLink = $("clear");
-//	clearLink.addEventListener("click", clearLocal);
+	var clearLink = $("clear");
+	clearLink.addEventListener("click", clearLocal);
 	var save = $("submit");
 	save.addEventListener("click", saveData);
 });
