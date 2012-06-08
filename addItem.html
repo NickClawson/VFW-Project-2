@@ -22,7 +22,8 @@
 				<legend>Ride Information</legend><!--label for the field-->
 				<ul><!--creates a list of items-->
 					<li><label for="rname">Ride Name:</label><input type="text" id="rname" /></li><!--what's the ride name?-->
-					<li><label for="date">Date of Ride:</label><input type="date" id="date" /></li><!--when did you ride it?-->
+					<li id="select">
+						<label for="parkLocation">Park Location:</label><br /></li><!--below creates drop down menu to select at which park the ride is located-->
 					<li>Type of Ride:<!--what kind of ride was it?-->
 						<ul><!--list of radio buttons below; roller coaster checked by default-->
 							<li><input type="radio" checked value="Roller Coaster" id="coaster" name="type"/><Label for="coaster">Roller Coaster</label></li>
@@ -34,8 +35,7 @@
 						</ul>
 					</li>
 					<li><label for="rating">Rating (Scale of 1-10):</label><br /><input type="range" name="rating" id="rating" min="1" max ="10" /></li><!--what did you think of the ride on scale of 1-10-->
-					<li id="select">
-						<label for="parkLocation">Park Location:</label><br /></li><!--below creates drop down menu to select at which park the ride is located-->
+					<li><label for="date">Date of Ride:</label><input type="date" id="date" /></li><!--when did you ride it?-->
 					<li><label for="comments">Additional Comments:</label><br /><textarea id="comments"></textarea></li><!--text box for additional comments-->
 					<li><input type="hidden" value="true" /></li><!--hidden value, nothing iportant returned yet-->
 				</ul>
